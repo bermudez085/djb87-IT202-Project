@@ -1,4 +1,8 @@
 <?php
+// Name: Daniel Bermudez
+// Date: 10/4/2024
+// Course Name and Section : IT-202-005
+// Assignment Name and Email : Phase 1 Assignment: Login and Logout / djb87@njit.edu
 if (!isset($_SESSION['login'])) {
 ?>
   <h2>Please log into Gourmet Foods and Snacks account</h2><br>
@@ -14,15 +18,15 @@ if (!isset($_SESSION['login'])) {
     <input type="submit" value="Login">
     <input type="hidden" name="content" value="validate">
   </form>
-  <?php
+<?php
 } else {
-   echo "<h2>Welcome to your Gourmet Foods and Snacks account, {$_SESSION['login']}  {$_SESSION['pronouns']} </h2>";
+  echo "<h2>Welcome to your Gourmet Foods and Snacks account, {$_SESSION['login']}  {$_SESSION['pronouns']} </h2>";
 ?>
-   <br><br>
-   <p>This program tracks category and item inventory</p>
-   <p>Please use the links in the navigation window</p>
-   <p>Please DO NOT use the browser navigation buttons!</p>
-   <a href="index.php?content=logout"><strong>Logout</strong></a>
+  <br><br>
+  <p>This program tracks category and item inventory</p>
+  <p>Please use the links in the navigation window</p>
+  <p>Please DO NOT use the browser navigation buttons!</p>
+  <a href="index.php?content=logout"><strong>Logout</strong></a>
 <?php //need
 }
 ?>
