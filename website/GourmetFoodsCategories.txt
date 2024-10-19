@@ -1,0 +1,18 @@
+// Name: Daniel Bermudez
+// Date: 10/19/2024
+// Course Name and Section : IT-202-005
+// Assignment Name and Email : Phase 1 Assignment: Login and Logout / djb87@njit.edu
+Create Category
+http://localhost:3000/addGourmetFoodscategory.test.php?GourmetFoodsCategoryID=101&GourmetFoodsCategoryCode=WCB&GourmetFoodsCategoryName=WhiteChocolateBox&GourmetFoodsCategoryAisleNumber=1
+Verify Create Category
+http://localhost:3000/listGourmetFoodscategories.test.php
+
+Update Category
+http://localhost:3000/changeGourmetFoodscategory.test.php?categoryID=101&categoryCode=WCB&categoryName=ChocolateBox&categoryAisleNumber=2
+Verify Update Category
+http://localhost:3000/listGourmetFoodscategories.test.php
+
+Delete Category
+http://localhost:3000/removeGourmetFoodscategory.test.php?categoryID=101
+Verify Delete Category
+http://localhost:3000/listGourmetFoodscategories.test.php

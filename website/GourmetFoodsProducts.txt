@@ -1,0 +1,18 @@
+// Name: Daniel Bermudez
+// Date: 10/19/2024
+// Course Name and Section : IT-202-005
+// Assignment Name and Email : Phase 1 Assignment: Login and Logout / djb87@njit.edu
+Create Product
+http://localhost:3000/addGourmetFoodsProduct.test.php?GourmetFoodsProductID=2001&GourmetFoodsProductCode=WCB&GourmetFoodsProductName=WhiteChocolate&GourmetFoodsdescription=Deliciouswhitechocolatebox&GourmetFoodsProductOutOfStock=No&GourmetFoodsCategoryID=100&GourmetFoods_WholesalePrice=15.99&GourmetFoodsListPrice=19.99
+Verify Create Product
+http://localhost:3000/listGourmetFoodsProducts.test.php
+
+Update Product
+http://localhost:3000/changeGourmetFoodsProduct.test.php?GourmetFoodsProductID=2001&GourmetFoodsProductCode=WCB&GourmetFoodsProductName=Chocolate&GourmetFoodsdescription=Deliciouswhitechocolatebox&GourmetFoodsProductOutOfStock=No&GourmetFoodsCategoryID=100&GourmetFoods_WholesalePrice=15.99&GourmetFoodsListPrice=19.99&GourmetFoodsCategoryID=100
+Verify Update Product
+http://localhost:3000/listGourmetFoodsProducts.test.php
+
+Delete Product
+http://localhost:3000/removeGourmetFoodsProduct.test.php?GourmetFoodsProductID=2001
+Verify Delete Product
+http://localhost:3000/listGourmetFoodsProducts.test.php
