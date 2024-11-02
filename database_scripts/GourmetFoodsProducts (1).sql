@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: sql1.njit.edu
--- Generation Time: Oct 19, 2024 at 07:11 AM
+-- Generation Time: Nov 02, 2024 at 01:05 AM
 -- Server version: 8.0.17
 -- PHP Version: 7.4.8
 
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `GourmetFoodsProducts` (
   `GourmetFoodsProductCode` varchar(10) NOT NULL,
   `GourmetFoodsProductName` varchar(255) NOT NULL,
   `GourmetFoodsdescription` text NOT NULL,
-  `GourmetFoodsProductOutOfStock` varchar(3) NOT NULL,
+  `GourmetFoodsProductOutOfStock` varchar(10) DEFAULT NULL,
   `GourmetFoodsCategoryID` int(11) NOT NULL,
   `GourmetFoods_WholesalePrice` decimal(10,2) NOT NULL,
   `GourmetFoodsListPrice` decimal(10,2) NOT NULL,
@@ -43,8 +43,9 @@ CREATE TABLE IF NOT EXISTS `GourmetFoodsProducts` (
 --
 
 INSERT INTO `GourmetFoodsProducts` (`GourmetFoodsProductID`, `GourmetFoodsProductCode`, `GourmetFoodsProductName`, `GourmetFoodsdescription`, `GourmetFoodsProductOutOfStock`, `GourmetFoodsCategoryID`, `GourmetFoods_WholesalePrice`, `GourmetFoodsListPrice`, `DateCreated`) VALUES
-(1000, 'DCC', 'Dark Chocolate Sea Salt Caramels', 'Rich dark chocolate covers soft caramel with a hint of sea salt. A perfect balance of sweet and salty in each bite.', 'YES', 100, 10.00, 21.99, '2024-10-18 14:39:48'),
+(1000, 'DCG', 'Dark ', 'Rich dark chocolate covers soft caramel with a hint of sea salt. A perfect balance of sweet and salty in each bite.', 'NO', 100, 10.01, 21.99, '2024-10-18 14:39:48'),
 (2000, 'WCP', 'White Cheddar Truffle Popcorn', 'Light, crunchy popcorn coated with sharp white cheddar and a touch of truffle. A savory treat for gourmet snack lovers.', 'NO', 200, 4.99, 9.99, '2024-10-18 14:39:51'),
+(2001, 'WCB', 'WhiteChocolate', 'White chocolate is a sweet confection made from cocoa butter, sugar, and milk solids, giving it a creamy texture and rich flavor without the bitterness of cocoa solids. Unlike traditional chocolate, it does not contain cocoa powder, which is why it lacks the characteristic chocolate flavor and is often described as having a sweet, buttery taste.', 'NO', 100, 15.99, 19.99, '2024-10-23 08:58:28'),
 (3000, 'BTV', 'Black Truffle Extra Virgin Olive Oil', 'Smooth olive oil infused with earthy black truffle flavor. Ideal for drizzling over pasta or gourmet dishes.', 'NO', 300, 12.00, 18.99, '2024-10-18 14:40:07'),
 (4000, 'ORB', 'Organic Raspberry & Blueberry Jam Duo', 'Two organic fruit jams packed with natural berry sweetness. Great for spreading on toast or adding to desserts.', 'NO', 400, 8.99, 19.99, '2024-10-18 14:40:08'),
 (5000, 'SEC', 'Single-Origin Ethiopian Coffee Beans', 'Premium coffee beans with bright, floral notes and a hint of citrus. Perfect for brewing a rich, aromatic cup.', 'NO', 500, 4.00, 14.99, '2024-10-18 14:40:10'),
@@ -62,7 +63,10 @@ INSERT INTO `GourmetFoodsProducts` (`GourmetFoodsProductID`, `GourmetFoodsProduc
 (17000, 'JRM', 'Organic Raspberry Jam', 'Delicious raspberry jam that adds a burst of flavor to any dish.', 'NO', 400, 4.50, 10.99, '2024-10-19 03:00:31'),
 (18000, 'ECO', 'Ethiopian Coffee Organic', 'Rich and flavorful coffee sourced from the finest Ethiopian beans.', 'NO', 500, 6.00, 14.99, '2024-10-19 03:00:33'),
 (19000, 'DRC', 'Dark Roast Coffee', 'A deep, robust blend perfect for coffee lovers who enjoy a strong flavor.', 'NO', 500, 5.00, 12.99, '2024-10-19 03:00:33'),
-(20000, 'LAC', 'Light Roast Coffee', 'Smooth and mellow coffee that offers a balanced flavor with a hint of sweetness.', 'NO', 500, 4.50, 10.99, '2024-10-19 03:00:33');
+(20000, 'LAC', 'Light Roast Coffee', 'Smooth and mellow coffee that offers a balanced flavor with a hint of sweetness.', 'NO', 500, 4.50, 10.99, '2024-10-19 03:00:33'),
+(30000, 'AAA', 'AnAnAn', 'oainioqnsdiqwndqwd.sjoqnwdoiqnwd', '0', 100, 19.99, 10.99, '2024-11-01 10:22:06'),
+(31000, 'BBB', 'bnbnbn', 'oainioqnsdiqwndqwd.sjoqnwdoiqnwd', '0', 100, 19.99, 10.99, '2024-11-01 10:23:22'),
+(40000, 'TBR', 'Toblerone', 'Milk chocolate bar that will ease your hunger. Made in Germany with delicacy.', 'NO', 100, 5.00, 15.00, '2024-11-01 19:59:52');
 
 --
 -- Indexes for dumped tables
@@ -77,7 +81,3 @@ ALTER TABLE `GourmetFoodsProducts`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-ALTER TABLE `GourmetFoodsProducts` MODIFY COLUMN GourmetFoodsProductOutOfStock VARCHAR(1);
-ALTER TABLE `GourmetFoodsProducts` MODIFY COLUMN GourmetFoodsProductOutOfStock VARCHAR(10);
-
-SHOW CREATE TABLE GourmetFoodsProucts;

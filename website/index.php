@@ -4,6 +4,8 @@
 // Course Name and Section : IT-202-005
 // Assignment Name and Email : Phase 1 Assignment: Login and Logout / djb87@njit.edu
 session_start();
+include("GourmetFoodscategory.php");
+include("GourmetFoodsproduct.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,6 +21,14 @@ Name: Daniel Bermudez
 </head>
 
 <body>
+<header>
+       <?php include("header.inc.php"); ?>
+   </header>
+   <section style="height: 425px;">
+       <nav style="float: left; height: 100%;">
+           <?php include("nav.inc.php"); ?>
+       </nav>
+
     <section id="container">
         <main>
             <?php
@@ -30,7 +40,9 @@ Name: Daniel Bermudez
             ?>
         </main>
     </section>
+    <footer>
+       <?php include("footer.inc.php"); ?>
+   </footer>
+
 </body>
-
-
 </html>

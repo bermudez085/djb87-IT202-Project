@@ -5,13 +5,13 @@
 // Assignment Name and Email : Phase 1 Assignment: Login and Logout / djb87@njit.edu
 error_log("\$_GET " . print_r($_GET, true));
 include("GourmetFoodscategory.php");
-$categoryID = $_GET['categoryID'];
-$category = Category::findCategory($categoryID);
-$result = $category->removeCategory();
+$GourmetFoodsCategoryID = $_GET['GourmetFoodsCategoryID'];
+$GourmetFoodsCategory = Category::findCategory($GourmetFoodsCategoryID);
+$result = $GourmetFoodsCategory->removeCategory();
 if ($result)
-   echo "<h2>Category $categoryID removed</h2>\n";
+   echo "<h2>Category $GourmetFoodsCategoryID removed</h2>\n";
 else
-   echo "<h2>Sorry, problem removing category $categoryID</h2>\n";
+   echo "<h2>Sorry, problem removing category $GourmetFoodsCategoryID</h2>\n";
 
 
 ?>
