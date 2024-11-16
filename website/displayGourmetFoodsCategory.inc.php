@@ -3,7 +3,8 @@
 // Date: 11/1/2024
 // Course Name and Section : IT-202-005
 // Assignment Name and Email : Phase 1 Assignment: Login and Logout / djb87@njit.edu
-if (!isset($_POST['GourmetFoodsCategoryID']) || !is_numeric($_POST['GourmetFoodsCategoryID'])) {
+if (!isset($_REQUEST['GourmetFoodsCategoryID']) or 
+(!is_numeric($_REQUEST['GourmetFoodsCategoryID']))) {
 ?>
    <h2>You did not select a valid GourmetFoodsCategoryID to view.</h2>
    <a href="index.php?content=listGourmetFoodscategories">List Categories</a>

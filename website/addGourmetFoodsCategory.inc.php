@@ -3,14 +3,15 @@
 // Date: 11/1/2024
 // Course Name and Section : IT-202-005
 // Assignment Name and Email : Phase 1 Assignment: Login and Logout / djb87@njit.edu
+
 if (isset($_SESSION['login'])) {
-    $GourmetFoodsCategoryID = $_POST['GourmetFoodsCategoryID'];
-    if ((trim($GourmetFoodsCategoryID) == '') || !is_numeric($GourmetFoodsCategoryID)) {
+    $GourmetFoodsCategoryID = filter_input(INPUT_POST, 'GourmetFoodsCategoryID', FILTER_VALIDATE_INT);
+    if ((trim($GourmetFoodsCategoryID) == '') || (!is_int($GourmetFoodsCategoryID))) {
         echo "<h2>Sorry, you must enter a valid category ID number</h2>\n";
     } else {
-        $GourmetFoodsCategoryCode = $_POST['GourmetFoodsCategoryCode'];
-        $GourmetFoodsCategoryName = $_POST['GourmetFoodsCategoryName'];
-        $GourmetFoodsCategoryAisleNumber = $_POST['GourmetFoodsCategoryAisleNumber'];
+        $GourmetFoodsCategoryCode = htmlspecialchars($_POST['GourmetFoodsCategoryCode']);
+        $GourmetFoodsCategoryName = htmlspecialchars($_POST['GourmetFoodsCategoryName']);
+        $GourmetFoodsCategoryAisleNumber = htmlspecialchars ($_POST['GourmetFoodsCategoryAisleNumber']);
         $category = new Category($GourmetFoodsCategoryID, $GourmetFoodsCategoryCode, $GourmetFoodsCategoryName, $GourmetFoodsCategoryAisleNumber);
         $result = $category->saveCategory();
         if ($result) {
