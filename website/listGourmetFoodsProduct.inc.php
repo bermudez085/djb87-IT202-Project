@@ -1,6 +1,27 @@
+<script language="javascript">
+   function listbox_dblclick() {
+       document.items.updateitem.click()
+   }
+
+
+   function button_click(target) {
+       var userConfirmed = true;
+       if (target == 1) {
+           userConfirmed = confirm("Are you sure you want to remove this item?");
+       }
+       if (userConfirmed) {
+           if (target == 1) items.action = "index.php?content=removeGourmetFoodsProduct";
+           if (target == 2) items.action = "index.php?content=updateGourmetFoodsProduct";
+       } else {
+           alert("Action canceled.");
+       }
+   }
+</script>
+
 <h2>Select Product</h2>
 <form name="items" method="post">
-   <select name="itemID" size="20">
+   <select name="GourmetFoodsProductID" ondblclick="listbox_dblclick()" name="itemID" size="20">
+
 <?php
 // Name: Daniel Bermudez
 // Date: 10/19/2024
@@ -26,5 +47,9 @@ foreach ($products as $product) {
 }
 ?>
    </select>
+   <br>
+   <input type="submit" onClick="button_click(1)" name="deleteitem" value="Delete Item">
+   <input type="submit" onClick="button_click(2)" name="updateitem" value="Update Item">
+
 </form>
 

@@ -18,20 +18,23 @@ if (isset($_SESSION['login'])) {
         $GourmetFoodsProduct = Product::findProduct($GourmetFoodsProductID);
 
         if ($GourmetFoodsProduct) {
-        $GourmetFoodsProduct->GourmetFoodsProductCode = $_POST['GourmetFoodsProductCode'];
-        $GourmetFoodsProduct->GourmetFoodsProductName = $_POST['GourmetFoodsProductName'];
-        $GourmetFoodsProduct->GourmetFoodsCategoryID = $_POST['GourmetFoodsCategoryID'];
-        $GourmetFoodsProduct->GourmetFoodsListPrice = $_POST['GourmetFoodsListPrice'];
-        $GourmetFoodsProduct->GourmetFoods_WholesalePrice = $_POST['GourmetFoods_WholesalePrice'];
-        $GourmetFoodsProduct->GourmetFoodsdescription = $_POST['GourmetFoodsdescription'];
-        $GourmetFoodsProduct->GourmetFoodsProductOutOfStock = isset($_POST['GourmetFoodsProductOutOfStock']) ? 'YES' : 'NO';
+            $GourmetFoodsProduct->GourmetFoodsProductCode = $_POST['GourmetFoodsProductCode'];
+            $GourmetFoodsProduct->GourmetFoodsProductName = $_POST['GourmetFoodsProductName'];
+            $GourmetFoodsProduct->GourmetFoodsCategoryID = $_POST['GourmetFoodsCategoryID'];
+            $GourmetFoodsProduct->GourmetFoodsListPrice = $_POST['GourmetFoodsListPrice'];
+            $GourmetFoodsProduct->GourmetFoods_WholesalePrice = $_POST['GourmetFoods_WholesalePrice'];
+            $GourmetFoodsProduct->GourmetFoodsdescription = $_POST['GourmetFoodsdescription'];
+            $GourmetFoodsProduct->GourmetFoodsProductOutOfStock = isset($_POST['GourmetFoodsProductOutOfStock']) ? 'YES' : 'NO';
 
-        $result = $GourmetFoodsProduct->updateProduct();
+            $result = $GourmetFoodsProduct->updateProduct();
 
-        if ($result) {
-            echo "<h2>Product $GourmetFoodsProductID updated</h2>\n";
+            if ($result) {
+                echo "<h2>Product $GourmetFoodsProductID updated</h2>\n";
+            } else {
+                echo "<h2>Problem updating product $GourmetFoodsProductID</h2>\n";
+            }
         } else {
-            echo "<h2>Problem updating product $GourmetFoodsProductID</h2>\n";
+            echo "<h2>Product not Found -  for item $GourmetFoodsProductID</h2>\n";
         }
     } else {
         echo "<h2>Update Canceled for item $GourmetFoodsProductID</h2>\n";
@@ -39,5 +42,3 @@ if (isset($_SESSION['login'])) {
 } else {
     echo "<h2>Please login first</h2>\n";
 }
-}
-?>

@@ -6,8 +6,13 @@
 
 if (isset($_SESSION['login'])) {
     $GourmetFoodsCategoryID = filter_input(INPUT_POST, 'GourmetFoodsCategoryID', FILTER_VALIDATE_INT);
-    if ((trim($GourmetFoodsCategoryID) == '') || (!is_int($GourmetFoodsCategoryID))) {
+    //if ((trim($GourmetFoodsCategoryID) == '') || (!is_int($GourmetFoodsCategoryID))) {
+    if ($GourmetFoodsCategoryID === false || $GourmetFoodsCategoryID === null) {
         echo "<h2>Sorry, you must enter a valid category ID number</h2>\n";
+
+    } else if (Category::findCategory($GourmetFoodsCategoryID)) {
+        echo "<h2>Sorry, An item with the ID #$itemID already exists</h2>\n";
+
     } else {
         $GourmetFoodsCategoryCode = htmlspecialchars($_POST['GourmetFoodsCategoryCode']);
         $GourmetFoodsCategoryName = htmlspecialchars($_POST['GourmetFoodsCategoryName']);
@@ -25,4 +30,3 @@ if (isset($_SESSION['login'])) {
     echo "<h2>Please log in first</h2>\n";
 }
 ?>
-

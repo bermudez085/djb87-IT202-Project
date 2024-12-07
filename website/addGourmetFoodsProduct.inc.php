@@ -9,6 +9,11 @@ if (isset($_SESSION['login'])) {
     $GourmetFoodsProductID = filter_input(INPUT_POST,'GourmetFoodsProductID', FILTER_VALIDATE_INT);
     if ((trim($GourmetFoodsProductID) == '') || (!is_numeric($GourmetFoodsProductID))) {
         echo "<h2>Sorry, you must enter a valid product ID number</h2>\n";
+
+    } else if (Product::findProduct($GourmetFoodsProductID)) {
+        echo "<h2>Sorry, An item with the ID #$GourmetFoodsCategoryID already exists</h2>\n";
+
+
     } else {
         $GourmetFoodsProductCode = htmlspecialchars($_POST['GourmetFoodsProductCode']);
         $GourmetFoodsProductName = htmlspecialchars($_POST['GourmetFoodsProductName']);

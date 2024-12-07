@@ -67,7 +67,7 @@ class Category
     static function findCategory($categoryID)
     {
         $db = getDB();
-        $query = "SELECT * FROM GourmetFoodsCategories WHERE GourmetFoodsCategoryID  = GourmetFoodsCategoryID";
+        $query = "SELECT * FROM GourmetFoodsCategories WHERE GourmetFoodsCategoryID  = " . $categoryID;
         $result = $db->query($query);
         $row = $result->fetch_array(MYSQLI_ASSOC);
         if ($row) {
@@ -109,4 +109,17 @@ class Category
         $db->close();
         return $result;
     }
+    static function getTotalCategories()
+{
+   $db = getDB();
+   $query = "SELECT count(GourmetFoodsCategoryID) FROM GourmetFoodsCategories";
+   $result = $db->query($query);
+   $row = $result->fetch_array();
+   if ($row) {
+       return $row[0];
+   } else {
+       return NULL;
+   }
+}
+
 }

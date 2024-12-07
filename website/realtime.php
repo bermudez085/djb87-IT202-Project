@@ -1,0 +1,23 @@
+<?php
+ob_start();
+include("GourmetFoodscategory.php");
+include("GourmetFoodsproduct.php");
+$totalCategories = Category::getTotalCategories();
+$totalItems = Product::getTotalItems();
+$listpricetotal = Product::getTotalListPrice();
+$wholesalepricetotal = Product::getTotalWholeSalePriceTotal();
+$doc = new DOMDocument("1.0");
+$inventory = $doc->createElement("inventory");
+$inventory = $doc->appendChild($inventory);
+$categories = $doc->createElement("categories", $totalCategories);
+$categories = $inventory->appendChild($categories);
+$items = $doc->createElement("items", $totalItems);
+$items = $inventory->appendChild($items);
+$listprice = $doc->createElement("listpricetotal", $listpricetotal);
+$listprice = $inventory->appendChild($listprice);
+$wholesaleprice = $doc->createElement("wholesalepricetotal", $wholesalepricetotal);
+$wholesaleprice = $inventory->appendChild($wholesaleprice);
+$output = $doc->saveXML();
+header("Content-type: application/xml");
+ob_end_clean();
+echo $output;

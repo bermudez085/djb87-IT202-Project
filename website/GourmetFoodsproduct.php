@@ -39,8 +39,8 @@ class Product
     function __toString()
     {
         return "<h2>Item: $this->GourmetFoodsProductID</h2>" .
-               "<h2>Name: $this->GourmetFoodsProductName</h2>\n" .
-               "<h2>Category ID: $this->GourmetFoodsCategoryID at $this->GourmetFoodsListPrice</h2>\n";
+            "<h2>Name: $this->GourmetFoodsProductName</h2>\n" .
+            "<h2>Category ID: $this->GourmetFoodsCategoryID at $this->GourmetFoodsListPrice</h2>\n";
     }
 
     function saveProduct()
@@ -80,7 +80,7 @@ class Product
                     $row['GourmetFoodsProductID'],
                     $row['GourmetFoodsProductCode'],
                     $row['GourmetFoodsProductName'],
-                    $row['GourmetFoodsdescription'],  
+                    $row['GourmetFoodsdescription'],
                     $row['GourmetFoodsProductOutOfStock'],
                     $row['GourmetFoodsCategoryID'],
                     $row['GourmetFoods_WholesalePrice'],
@@ -99,9 +99,11 @@ class Product
     static function findProduct($productID)
     {
         $db = getDB();
-        $query = "SELECT * FROM GourmetFoodsProducts WHERE GourmetFoodsProductID = ?";
+        $query = "SELECT * FROM GourmetFoodsProducts WHERE GourmetFoodsProductID = " . $productID;
         $stmt = $db->prepare($query);
-        $stmt->bind_param("i", $productID);
+        //$stmt->bind_param("i", $productID);
+        ///$stmt->bind_param("sisdsds", $GourmetFoodsProductName, $GourmetFoodsCategoryID, $GourmetFoodsListPrice, $GourmetFoodsdescription, $GourmetFoods_WholesalePrice, $GourmetFoodsProductCode, $GourmetFoodsProductID);
+
         $stmt->execute();
         $result = $stmt->get_result();
         $row = $result->fetch_array(MYSQLI_ASSOC);
@@ -110,7 +112,7 @@ class Product
                 $row['GourmetFoodsProductID'],
                 $row['GourmetFoodsProductCode'],
                 $row['GourmetFoodsProductName'],
-                $row['GourmetFoodsdescription'], 
+                $row['GourmetFoodsdescription'],
                 $row['GourmetFoodsProductOutOfStock'],
                 $row['GourmetFoodsCategoryID'],
                 $row['GourmetFoods_WholesalePrice'],
@@ -139,7 +141,7 @@ class Product
 
         $stmt = $db->prepare($query);
         $stmt->bind_param(
-            "ssiddssi",
+            "sssddssi",
             $this->GourmetFoodsProductCode,
             $this->GourmetFoodsProductName,
             $this->GourmetFoodsdescription,
@@ -165,5 +167,41 @@ class Product
         $db->close();
         return $result;
     }
+    static function getTotalItems()
+    {
+        $db = getDB();
+        $query = "SELECT count(GourmetFoodsProductID) FROM GourmetFoodsProducts";
+        $result = $db->query($query);
+        $row = $result->fetch_array();
+        if ($row) {
+            return $row[0];
+        } else {
+            return NULL;
+        }
+    }
+    static function getTotalListPrice()
+    {
+        $db = getDB();
+        $query = "SELECT sum(GourmetFoodsListPrice) FROM GourmetFoodsProducts";
+        $result = $db->query($query);
+        $row = $result->fetch_array();
+        if ($row) {
+            return $row[0];
+        } else {
+            return NULL;
+        }
+    }
+
+    static function getTotalWholeSalePriceTotal()
+    {
+        $db = getDB();
+        $query = "SELECT sum(GourmetFoods_WholesalePrice) FROM GourmetFoodsProducts";
+        $result = $db->query($query);
+        $row = $result->fetch_array();
+        if ($row) {
+            return $row[0];
+        } else {
+            return NULL;
+        }
+    }
 }
-?>
